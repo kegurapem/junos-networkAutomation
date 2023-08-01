@@ -24,10 +24,6 @@
 
 
 
-
-
-
-
 import json
 from nornir import InitNornir
 from nornir_napalm.plugins.tasks import napalm_get
