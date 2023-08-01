@@ -1,0 +1,5 @@
+---
+junos_group_cusco:
+    platform: 'junos'
+    location:
+        city: 'cusco'
