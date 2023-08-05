@@ -26,6 +26,3 @@ def add_switch():
             yaml.dump(existing_data, file)
 
 add_switch()
-
-def hello():
-     return print('Hello')
