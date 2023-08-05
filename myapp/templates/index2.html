@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% comment %} <link rel="stylesheet" href="style.css"> {% endcomment %}
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> {% endcomment %}
+</head>
+<body>
+    <main class="container-main">
+        <div class="formSwitch">
+            <h1>Interfaz de Configuración</h1>
+            {% comment %} <form method="POST"> {% endcomment %}
+                {% comment %} {% csrf_token %} {% endcomment %}
+                <!-- <label for="switch1">Switch-1</label>
+                <input type="checkbox" id="fname" name="switch1"><br><br>
+                <label for="switch2">Switch-1</label>
+                <input type="checkbox" id="lname" name="switch2"> -->
+                {% comment %} <fieldset class="fieldset-data">
+                    <legend>Seleccione los switches que desea consultar</legend>
+                    <div>
+                      <input type="checkbox" id="switch1" name="switch1" value="valor_opcion_1"/>
+                      <label for="switch1">switch-1</label>
+                    </div>
+
+                    <div>
+                      <input type="checkbox" id="switch2" name="switch2" value="valor_opcion_2"/>
+                      <label for="switch2">switch-2</label>
+                    </div>
+                </fieldset> {% endcomment %}
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="checkbox" name="switch1" value="True">
+                    <label for="switch1">Opción 1</label><br>
+                    <input type="checkbox" name="switch2" value="True">
+                    <label for="switch2">Opción 2</label><br>
+                    <input type="submit" value="Enviar">
+                </form>
+
+                {% comment %} <fieldset class="fieldset-data">
+                    <legend>Seleccione el tipo de solicitud</legend>
+                    <div>
+                      <input type="radio" id="get_config" name="get_config" value="get_config" />
+                      <label for="get_config">get_config</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="get_interfaces" name="get_config" value="get_config" />
+                        <label for="get_interfaces">get_interfaces</label>
+                    </div>
+                </fieldset>
+            </form>
+            <input type="submit" value="Enviar"> {% endcomment %}
+            {% comment %} <button class="ejecutar" id="cargar">Cargar Solicitud</button>
+            <button class="ejecutar" id="ejecutar">Ejecutar</button> {% endcomment %}
+        </div>
+    </main>
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> {% endcomment %}
+    {% comment %} <script src="./index2.js"></script> {% endcomment %}
+</body>

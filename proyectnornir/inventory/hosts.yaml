@@ -1,13 +1,13 @@
 ---
 switch.access-01:
-    hostname: 172.0.0.100
+    hostname: 10.1.8.131
     groups:
         - junos_group_cusco
     data:
         layer: 'layer 2'
 
 switch.access-02:
-    hostname: 172.0.0.110
+    hostname: 10.1.8.132
     groups:
         - junos_group_cusco
     data:
