@@ -1,5 +1,7 @@
 from django.shortcuts import render
-
+from funcionesnornir.addswitch import add_switch
+from funcionesnornir.addswitch import hello
+import yaml
 # data = hello()
 
 # Create your views here.
@@ -17,9 +19,10 @@ def mi_vista(request):
         print(type(switch1))   
         print(switch2)
 
-        if switch1 == 'True':
-            def hello():
-                return  print('Hello World')
+        # if switch1 == 'True':
+        #     add_switch(switch1)
+        add_switch()
+        hello()
 
         return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
 
