@@ -22,7 +22,5 @@ def add_switch():
         existing_data.update(data_to_insert)
 
         # Guardar la información actualizada en el archivo ejemplo.yaml
-        with open("/home/kevin/junos-networkAutomation/funcionesnornir", "w") as file:
+        with open("/home/kevin/junos-networkAutomation/funcionesnornir/example.yaml", "w") as file:
             yaml.dump(existing_data, file)
-
-add_switch()

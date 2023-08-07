@@ -72,4 +72,4 @@ def serialize_results_to_json(config_file="/home/kevin/junos-networkAutomation/p
         archivo.write(data_json)
 
 # Uso de la función
-serialize_results_to_json()
+# serialize_results_to_json()

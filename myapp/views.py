@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from funcionesnornir.addswitch import add_switch
-from funcionesnornir.addswitch import hello
-import yaml
-# data = hello()
+from proyectnornir.tasks.main import serialize_results_to_json  # Importa la función saludo desde saludo.py
+
+
 
 # Create your views here.
 # def index(request):
@@ -19,10 +19,9 @@ def mi_vista(request):
         print(type(switch1))   
         print(switch2)
 
-        # if switch1 == 'True':
-        #     add_switch(switch1)
         add_switch()
-        hello()
+
+        serialize_results_to_json()
 
         return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
 

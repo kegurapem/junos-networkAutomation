@@ -7,7 +7,7 @@
             "os_version": "18.2R3-S2.9",
             "hostname": "",
             "fqdn": "",
-            "uptime": 270713.0,
+            "uptime": 516777.0,
             "interface_list": [
                 "ge-0/0/0",
                 "pfe-0/0/0",
@@ -88,7 +88,7 @@
             "os_version": "18.2R3-S4.1",
             "hostname": "",
             "fqdn": "",
-            "uptime": 270712.0,
+            "uptime": 516777.0,
             "interface_list": [
                 "ge-0/0/0",
                 "pfe-0/0/0",
