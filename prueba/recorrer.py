@@ -13,7 +13,7 @@ contenidoyaml = yaml.safe_load_all(switchesyaml)
 listipswitches = []
 # Recorre el contenido del archivo YAML
 for data in contenidoyaml:
-    detalles = next(iter(data.values()))['hostname']  # Obtiene los detalles del switch
+    detalles = next(iter(data.values()))  # Obtiene los detalles del switch
     print(detalles)
     hostname = detalles['hostname']
     listipswitches = listipswitches + [hostname]

@@ -1,35 +1,34 @@
-# import yaml
-
-# with open("prueba/switches.yaml", "r") as file:
-#     switches = list(yaml.safe_load_all(file))
-
-# # Lista todos los documentos YAML en el archivo
-# # print(switches)
-
-# # Accede a un documento YAML específico
-# # print("Switch 1:")
-# # print(switches[0])  # Accede al primer documento
-# # print("---")
-
-# switch1 = False
-# switch2 = False
-
-# if switch1 == True:
-#     print(switches[0])
-# elif switch2 == True:
-#     print(switches[1])
-# else:
-#     print('pipipip')
-
 import yaml
-
-data1 = ['switch.access-01', 'switch.access-02']
 
 with open("prueba/switches.yaml", "r") as file:
     switches_data = list(yaml.safe_load_all(file))
 
+# Lista para almacenar los datos de los host
+ip_switch = []
+data_recibida = ['10.1.8.131', '10.1.8.132']
 
-print(switches_data)
+# Iterar sobre la lista original y extraer los datos de los host
+for item in switches_data:
+    for valor in item.values():
+        ip_switch.append(valor['hostname'])
+
+# Imprimir la nueva lista con los datos de los host
+print(ip_switch)
+
+
+for element in data_recibida:
+    print(f'element: {element}')
+    contador = 0
+    if element in ip_switch:
+        print(ip_switch)
+        with open('prueba/new.yaml', 'w') as archivo:
+            yaml.dump(switches_data[contador], archivo, default_flow_style=False)
+            # print(switches_data[1])
+    else:
+        print('pipipipi')
+    
+    contador = contador + 1
+
 # print(switches_data[0])
 # Ahora switches_data es una lista con cada switch representado como un diccionario
 # Puedes realizar operaciones sobre los switches en el bucle
