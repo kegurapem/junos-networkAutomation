@@ -28,7 +28,7 @@ def create_hosts_yaml(list_selecction, path_hosts_switches):
         switches_data = list(yaml.safe_load_all(file))
         # print(f'switches_data: {switches_data}')
 
-    ip_switches = get_ips("prueba/switches.yaml")
+    ip_switches = get_ips(path_hosts_switches)
     # print(f'ip_switches: {ip_switches}')
 
     # with open('prueba/new.yaml', 'w') as archivo:

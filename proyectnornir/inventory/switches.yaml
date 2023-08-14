@@ -6,7 +6,6 @@ switch.access-01:
     data:
         layer: 'layer 2'
 
----
 switch.access-02:
     hostname: 10.1.8.132
     groups:

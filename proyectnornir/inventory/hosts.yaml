@@ -1,15 +1,7 @@
 ---
-switch.access-01:
-    hostname: 10.1.8.131
-    groups:
-        - junos_group_cusco
-    data:
-        layer: 'layer 2'
-
----
 switch.access-02:
-    hostname: 10.1.8.132
-    groups:
-        - junos_group_cusco
-    data:
-        layer: 'layer 2'
+  data:
+    layer: layer 2
+  groups:
+  - junos_group_cusco
+  hostname: 10.1.8.132

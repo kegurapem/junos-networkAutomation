@@ -1,0 +1,52 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download</title>
+</head>
+<body>
+    <main class="container-main">
+        <div class="formSwitch">
+            <h1>Descargar archivo</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit">Descargar</button>
+                </form>
+        </div>
+    </main>
+</body>
+</html>
+{% endblock content %}
+
+
+{% comment %} 
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download</title>
+</head>
+<body>
+    <main class="container-main">
+        <div class="formSwitch">
+            <h1>Descargar archivo</h1>
+                <a href="{% url 'download_json' %}" download="archivo.json">
+                    <button>Descargar</button>
+                </a>
+        </div>
+    </main>
+</body>
+</html>
+{% endblock content %} {% endcomment %}
