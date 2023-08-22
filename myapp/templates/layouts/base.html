@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto Nornir</title>
-    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    {% comment %} <link rel="icon" href="{% static 'img/icon.png' %}" type="image/x-icon"> {% endcomment %}
+    {% comment %} {% load static %}
+    <img src="{% static '/imagenes/logo.jpg' %}" alt="My image" width="20px"> {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="{% static 'styles/main.css' %}"> {% endcomment %}
 </head>
 <body>
     <nav class="navbar container">

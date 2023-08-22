@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
 from proyectnornir.tasks.main import serialize_results_to_json  # Importa la función saludo desde saludo.py
 from funcionesnornir.create_hosts import create_hosts_yaml
-from django.http import HttpResponse
-import os
-
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 # def index(request):
@@ -11,6 +9,13 @@ import os
 #         'hello': hello()
 #     })
 # ***********************************************************************************
+
+def signup(request):
+    return render(request, 'signup.html', {
+        'form': UserCreationForm
+    })
+
+
 
 def mi_vista(request):
     path_hosts_switches = 'proyectnornir/inventory/switches.yaml'
