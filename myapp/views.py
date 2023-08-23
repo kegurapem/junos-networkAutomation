@@ -4,6 +4,7 @@ from funcionesnornir.create_hosts import create_hosts_yaml
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.contrib.auth import login
 
 # Create your views here.
 # def index(request):
@@ -26,8 +27,15 @@ def signup(request):
                 user.save()
                 return HttpResponse('User created successfully')
             except:
-                return HttpResponse('Username already exists')
-        return HttpResponse('Password do not match')
+                return render(request, 'signup.html', {
+                    'form': UserCreationForm,
+                    'error': 'Username already exists'
+                })
+                # return HttpResponse('Username already exists')
+        return render(request, 'signup.html', {
+            'form': UserCreationForm,
+            'error': 'Password do not match'
+        })
 
 
 
