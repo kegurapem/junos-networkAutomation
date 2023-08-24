@@ -111,5 +111,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# the example_app is an app in which models.py is defined
-AUTH_USER_MODEL = 'myapp.User' 
+# the example_app is an app in which models.py is defined 
