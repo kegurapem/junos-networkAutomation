@@ -13,13 +13,19 @@
     <nav class="navbar container">
         <ul>
             <li>
-                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'index' %}">Config</a>
             </li>
             <li>
-                <a href="{% url 'download' %}">Download</a>
+                <a href="{% url 'home' %}">Home</a>
             </li>
             <li>
                 <a href="{% url 'signup' %}">Signup</a>
+            </li>
+            <li>
+                <a href="{% url 'login' %}">Login</a>
+            </li>
+            <li>
+                <a href="{% url 'download' %}">Download</a>
             </li>
         </ul>
     </nav>

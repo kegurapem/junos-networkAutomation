@@ -3,9 +3,9 @@ from . import views
 
 urlpatterns = [
     path('', views.mi_vista, name="index"),
-    path('signup/', views.signup, name="signup"),
+    path('home/', views.HomePage, name="home"),
+    path('signup/', views.SignupPage, name="signup"),
+    path('login/', views.LoginPage, name="login"),
+    path('logout/', views.LogoutPage, name="logout"),
     path('download/', views.download, name="download"),
-    path('homepage/', views.HomePage, name="homepage"),
-    path('signuppage/', views.SigunPage, name="signuppage"),
-    path('loginpage/', views.LoginPage, name="loginpage"),
 ]
