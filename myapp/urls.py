@@ -5,4 +5,7 @@ urlpatterns = [
     path('', views.mi_vista, name="index"),
     path('signup/', views.signup, name="signup"),
     path('download/', views.download, name="download"),
+    path('homepage/', views.HomePage, name="homepage"),
+    path('signuppage/', views.SigunPage, name="signuppage"),
+    path('loginpage/', views.LoginPage, name="loginpage"),
 ]

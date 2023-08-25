@@ -68,7 +68,13 @@ def download(request):
 
 
 
-# list_selecction = ['10.1.8.131', '10.1.8.132', '10.1.8.133']
-# path_hosts_switches = 'proyectnornir/inventory/switches.yaml'
-# # path_hosts_switches= 
-# create_hosts_yaml(list_selecction, path_hosts_switches)
+def HomePage(request):
+    return render (request, 'home.html')
+
+
+def SigunPage(request):
+    return render (request, 'signup2.html')
+
+
+def LoginPage(request):
+    return render (request, 'login2.html')
