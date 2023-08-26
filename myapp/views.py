@@ -71,6 +71,9 @@ def SignupPage(request):
         email = request.POST.get('email')
         pass1 = request.POST.get('password1')
         pass2 = request.POST.get('password2')
+        admin = request.POST.get('administrador')
+        consultor = request.POST.get('consultor')
+        print(admin, consultor)
 
         if pass1 != pass2:
             return HttpResponse('Your password do not the same')
