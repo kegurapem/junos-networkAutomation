@@ -15,36 +15,64 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-
-    <form action="" method="post">  
+    {% comment %} <form action="" method="post">  
         {% csrf_token %}  
         <h3>Signup Here</h3>
+        <div class="mb-3">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" type="text" placeholder="Username" name="username" id="username">
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Username" name="username" id="username">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" placeholder="Email or Phone" name="email" id="email">
 
-        <label for="email">Email</label>
-        <input type="email" placeholder="Email or Phone" name="email" id="email">
+            <label class="form-label" for="password1">Password</label>
+            <input class="form-control" type="password" placeholder="Password" id="password1" name="password1">
 
-        <label for="password1">Password</label>
-        <input type="password" placeholder="Password" id="password1" name="password1">
+            <label class="form-label" for="password2">Confrom Password</label>
+            <input class="form-control" type="password" placeholder="Confrom Password" id="password2" name="password2">
 
-        <label for="password2">Confrom Password</label>
-        <input type="password" placeholder="Confrom Password" id="password2" name="password2">
-
-        <label for="administrador">administrador</label>
-        <input type="radio" id="administrador" name="administrador" value="administrador">
-
-        <label for="consultor">consultor</label>
-        <input type="radio" id="consultor" name="consultor" value="consultor">
-
-        <button type="submit">Signup</button>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="administrador" id="administrador">
+                <label class="form-check-label" for="administrador">Administrador</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="consultor" id="consultor">
+                <label class="form-check-label" for="consultor">Consultor</label>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Signup</button>
         
         <a href="{% url 'login' %}" >i have already account</a>
+    </form> {% endcomment %}
+    <h3>Registrarse Aquí</h3>
+    <form>
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label" for="username">Usuario</label>
+            <input class="form-control" type="text" placeholder="Usuario" name="username" id="username">
+        
+        <div class="mb-3">
+            <label class="form-label" for="email">Correo</label>
+            <input class="form-control" type="email" placeholder="Correo" name="email" id="email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="password1">Contraseña</label>
+            <input class="form-control" type="password" placeholder="Contraseña" id="password1" name="password1" value="password1">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="password2">Confirmar Constraseña</label>
+            <input class="form-control" type="password" placeholder="Confirmar Constraseña" id="password2" name="password2" value="password2">
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="administrador" id="administrador">
+            <label class="form-check-label" for="administrador">Administrador</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="consultor" id="consultor">
+            <label class="form-check-label" for="consultor">Consultor</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <a href="{% url 'login' %}" >Ya tengo una cuenta</a>
     </form>
 </body>
 </html>
