@@ -27,7 +27,7 @@
         <button type="submit">Log In</button>
         <a href="{% url 'signup' %}" >Create a account</a>
     </form>
-    <form>
+    {% comment %} <form>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email address</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -50,6 +50,6 @@
             </label>
           </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </form> {% endcomment %}
 </body>
 </html>

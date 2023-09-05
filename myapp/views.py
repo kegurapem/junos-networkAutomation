@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth import login
+import os
 
 
 # def signup(request):
@@ -105,3 +106,17 @@ def LoginPage(request):
 def LogoutPage(request):
     logout(request)
     return redirect('login')
+
+
+def descargar_json(request):
+    # Ruta al archivo JSON que deseas descargar
+    json_file_path = '/home/kevin/junos-networkAutomation/proyectnornir/result.json'
+
+    # Verificar si el archivo existe
+    if os.path.exists(json_file_path):
+        with open(json_file_path, 'rb') as file:
+            response = HttpResponse(file.read(), content_type='application/json')
+            response['Content-Disposition'] = f'attachment; filename="{os.path.basename(json_file_path)}"'
+            return response
+    else:
+        return HttpResponse('El archivo no se encontró', status=404)

@@ -15,7 +15,7 @@
     <main class="container-main">
         <div class="formSwitch">
             <h1>Descargar archivo</h1>
-                <form method="post">
+                <form method="post" action="{% url 'download' %}">
                     {% csrf_token %}
                     <button type="submit">Descargar</button>
                 </form>
