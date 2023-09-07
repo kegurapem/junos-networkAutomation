@@ -7,5 +7,5 @@ urlpatterns = [
     path('signup/', views.SignupPage, name="signup"),
     path('', views.LoginPage, name="login"),
     path('logout/', views.LogoutPage, name="logout"),
-    path('download/', views.download, name="download"),
+    path('download/', views.descargar_json, name="download"),
 ]

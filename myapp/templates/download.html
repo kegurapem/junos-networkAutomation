@@ -15,10 +15,40 @@
     <main class="container-main">
         <div class="formSwitch">
             <h1>Descargar archivo</h1>
-                <form method="post" action="{% url 'download' %}">
+                <form method="post">
                     {% csrf_token %}
                     <button type="submit">Descargar</button>
                 </form>
+        </div>
+
+        {% comment %} <div class="json-content">
+            <pre>
+                <code>
+                    {% for key, value in json_content.items %}
+                        {{ key }}: 
+                        <br>
+                        {% for k, v in value.get_facts.items %}
+                            &emsp; {{ k }}: {{ v }}<br>
+                        {% endfor %}
+                    {% endfor %}
+                </code>
+            </pre>
+        </div>
+        <hr>
+        <div class="json-content">
+                <code>
+                    {% for key, value in json_content.items %}
+                        {{ key }}: 
+                        <br>
+                        {% for k, v in value.get_facts.items %}
+                            &emsp; {{ k }}: {{ v }}<br>
+                        {% endfor %}
+                    {% endfor %}
+        </div> {% endcomment %}
+        <div>
+            <pre>
+                <code>{{json_content}}</code>
+            </pre>
         </div>
     </main>
 </body>
