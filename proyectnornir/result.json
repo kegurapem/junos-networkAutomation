@@ -1,13 +1,13 @@
 {
-    "switch.access-02": {
+    "switch.access-01": {
         "get_facts": {
             "vendor": "Juniper",
-            "model": "EX3400-48P",
-            "serial_number": "NY3620370540",
-            "os_version": "18.2R3-S4.1",
+            "model": "EX3400-48T",
+            "serial_number": "NX3620170684",
+            "os_version": "18.2R3-S2.9",
             "hostname": "",
             "fqdn": "",
-            "uptime": 3282109.0,
+            "uptime": 3101712.0,
             "interface_list": [
                 "ge-0/0/0",
                 "pfe-0/0/0",

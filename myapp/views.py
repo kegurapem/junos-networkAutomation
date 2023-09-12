@@ -108,75 +108,63 @@ def LogoutPage(request):
     logout(request)
     return redirect('login')
 
-def verificarjson(json_file_path):
-    if os.path.exists(json_file_path):
-        with open(json_file_path, 'rb') as file:
-            response = HttpResponse(file.read(), content_type='application/json')
-            print(response)
-            response['Content-Disposition'] = f'attachment; filename="{os.path.basename(json_file_path)}"'
-            print('XXXXXXXXXXXXXXXXXXXXXXXXXXXX')
-            return response
-    else:
-        return HttpResponse('El archivo no se encontró', status=404)
+
 
 def descargar_json(request):
+    ruta = "/home/kevin/junos-networkAutomation/proyectnornir/"
+    nombre_archivo = "result.json"
+    existe_json(ruta, nombre_archivo)
+
+
+    # json_file_path = '/home/kevin/junos-networkAutomation/proyectnornir/result.json'    
+    
+    # if os.path.exists(json_file_path):
+    #         with open(json_file_path, 'r') as file:
+    #             json_content = json.load(file)  # Cargar el contenido JSON
+    #             print(json_content)
+    #         return render(request, 'download.html', {'json_content': json_content})
+    # else:
+    #     return HttpResponse('El archivo no se encontró', status=404)
+
+
+
     if request.method == 'POST':
         print('estoy haciendo un post')
         # Ruta al archivo JSON que deseas descargar
         json_file_path = '/home/kevin/junos-networkAutomation/proyectnornir/result.json'
 
-        verificarjson(json_file_path)
-
-        # # Verificar si el archivo existe
-        # if os.path.exists(json_file_path):
-        #     with open(json_file_path, 'rb') as file:
-        #         response = HttpResponse(file.read(), content_type='application/json')
-        #         response['Content-Disposition'] = f'attachment; filename="{os.path.basename(json_file_path)}"'
-        #         return response
-        # else:
-        #     return HttpResponse('El archivo no se encontró', status=404)
+        # Verificar si el archivo existe
+        if os.path.exists(json_file_path):
+            with open(json_file_path, 'rb') as file:
+                response = HttpResponse(file.read(), content_type='application/json')
+                response['Content-Disposition'] = f'attachment; filename="{os.path.basename(json_file_path)}"'
+                return response
+        else:
+            return HttpResponse('El archivo no se encontró', status=404)
 
         # return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
         # return redirect('download')
-    
-    return render(request, 'download.html')
+    else:
+        json_file_path = '/home/kevin/junos-networkAutomation/proyectnornir/result.json' 
+        if os.path.exists(json_file_path):
+            with open(json_file_path, 'r') as file:
+                json_content = json.load(file)  # Cargar el contenido JSON
+                print(json_content)
+            return render(request, 'download.html', {'json_content': json_content})
+        else:
+            # return HttpResponse('El archivo no se encontró', status=404)
+            return render(request, 'download.html')
+    # return render(request, 'download.html')
 
 
 
-# def descargar_json(request):
-#     if request.method == 'POST':
-#         print('estoy haciendo un post')
-#         # Ruta al archivo JSON que deseas descargar
-#         json_file_path = '/home/kevin/junos-networkAutomation/proyectnornir/result.json'
+def existe_json(ruta, nombre_archivo):
 
-#         # Verificar si el archivo existe
-#         if os.path.exists(json_file_path):
-#             with open(json_file_path, 'r') as file:
-#                 json_content = json.load(file)  # Cargar el contenido JSON
-#                 print('PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP')
-#                 print(json_content)
+    # Ruta completa del archivo JSON
+    ruta_completa = os.path.join(ruta, nombre_archivo)
 
-#             # Agrega este registro de impresión para verificar el contenido
-#             print(json_content)
-
-#             # Pasa el contenido JSON como contexto a la plantilla
-#             return render(request, 'download.html', {'json_content': json_content})
-#         else:
-#             return HttpResponse('El archivo no se encontró', status=404)
-
-
-#     json_file_path = '/home/kevin/junos-networkAutomation/proyectnornir/result.json'    
-#     if os.path.exists(json_file_path):
-#             with open(json_file_path, 'r') as file:
-#                 json_content = json.load(file)  # Cargar el contenido JSON
-#                 print('PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP')
-#                 print(json_content)
-
-
-
-#             # Pasa el contenido JSON como contexto a la plantilla
-#             return render(request, 'download.html', {'json_content': json_content})
-#     else:
-#         return HttpResponse('El archivo no se encontró', status=404)
-
-#     return render(request, 'download.html')
+    # Verificar si el archivo JSON existe
+    if os.path.exists(ruta_completa):
+        print(f"El archivo {nombre_archivo} existe en la ruta especificada.")
+    else:
+        print(f"El archivo {nombre_archivo} no existe en la ruta especificada.")
