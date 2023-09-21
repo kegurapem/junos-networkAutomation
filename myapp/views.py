@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth import login
 import os
 import json
+from myapp.models import Curso
 
 
 # def signup(request):
@@ -168,3 +169,11 @@ def existe_json(ruta, nombre_archivo):
         print(f"El archivo {nombre_archivo} existe en la ruta especificada.")
     else:
         print(f"El archivo {nombre_archivo} no existe en la ruta especificada.")
+
+
+def history(request):
+    form = Curso()
+    return render(request, 'history.html',
+        {
+            'form': form
+        })
