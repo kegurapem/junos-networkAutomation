@@ -7,6 +7,11 @@ class Profile(models.Model):
         User, on_delete=models.CASCADE, related_name='profile')
 
 
-class Curso(models.Model):
-    nombre = models.CharField(max_length=30)
-    creditos = models.PositiveSmallIntegerField()
+class UsuarioNornir(models.Model):
+    name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    # password = models.CharField(max_length=50)
+    administrador = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = 'usuario_nornir'

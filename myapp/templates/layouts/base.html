@@ -31,9 +31,10 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'index' %}">Config</a>
             <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-            <a class="navbar-brand" href="{% url 'signup' %}">Signup</a>
+            {% comment %} <a class="navbar-brand" href="{% url 'signup' %}">Signup</a> {% endcomment %}
             <a class="navbar-brand" href="{% url 'login' %}">Login</a>
             <a class="navbar-brand" href="{% url 'download' %}">Download</a>
+            <a class="navbar-brand" href="{% url 'usersnornir' %}">Lista de Usuarios</a>
           </div>
       </nav>
     {% comment %} <nav class="navbar navbar-light bg-light">

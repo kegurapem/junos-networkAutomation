@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %} 
+        <h3>Regístrese</h3>
+
+        <label for="name">Nombre</label>
+        <input type="text" placeholder="Nombre" name="name" id="name">
+
+        <label for="lastname1">Apellido Paterno</label>
+        <input type="text" placeholder="Apellido Paterno" name="lastname1" id="lastname1">
+
+        <label for="lastname2">Apellido Materno</label>
+        <input type="text" placeholder="Apellido Materno" name="lastname2" id="lastname2">
+
+        <label for="password1">Contraseña</label>
+        <input type="password" placeholder="Contraseña" id="password1" name="password1">
+
+        <label for="password2">Repetir Contraseña</label>
+        <input type="password" placeholder="Repetir Contraseña" id="password2" name="password2">
+
+        <label for="administrator">Administrador</label>
+        <input type="radio" name="permiso" id="administrator" value="admin">
+        
+        <label for="viewer">Visor</label>    
+        <input type="radio" name="permiso" id="viewer" value="viewer">
+        
+        
+
+        <button type="submit">Signup</button>
+                    
+    </form>
+
+    <a href="{% url 'login1' %}" >Login</a>
+</body>
+</html>

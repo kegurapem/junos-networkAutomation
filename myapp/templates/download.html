@@ -13,14 +13,6 @@
 </head>
 <body>
     <main class="container-main">
-        <div class="formSwitch">
-            <h1>Descargar archivo</h1>
-                <form method="post">
-                    {% csrf_token %}
-                    <button type="submit">Descargar</button>
-                </form>
-        </div>
-
         {% comment %} <div class="json-content">
             <pre>
                 <code>
@@ -45,10 +37,21 @@
                         {% endfor %}
                     {% endfor %}
         </div> {% endcomment %}
-        <div>
-            <pre>
-                <code>{{json_content}}</code>
-            </pre>
+        
+
+        <div class="formSwitch">
+            <h1>Descargar archivo</h1>
+                <hr>
+                <div>
+                    <pre>
+                        <code>{{json_content}}</code>
+                    </pre>
+                </div>
+                <hr>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit">Descargar</button>
+                </form>
         </div>
     </main>
 </body>
