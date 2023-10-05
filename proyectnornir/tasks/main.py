@@ -1,54 +1,11 @@
-# from nornir import InitNornir
-# from nornir_utils.plugins.functions import print_result
-# from nornir_napalm.plugins.tasks import napalm_get
-# import json
-
-# nr = InitNornir(
-#     # config_file="config.yaml", dry_run=True
-#     config_file="config.yaml"
-# )
-
-# results = nr.run(
-#     # task=napalm_get, getters=["facts", "interfaces"]
-#     # task=napalm_get, getters=["config"]
-#     task=napalm_get, getters=["get_facts"]
-# )
-# # print_result(results)
-# print(results)
-# # # Paso 1: Convertir el diccionario a formato JSON
-# # data_json = json.dumps(results, indent=4)  # El parámetro 'indent' agrega indentación para hacerlo más legible
-
-# # # Paso 2: Escribir los datos en el archivo "ejemplo.json"
-# # with open('result.json', 'w') as archivo:
-# #     archivo.write(data_json)
-
-
-# ********************************************************************************
-# import json
-# from nornir import InitNornir
-# from nornir_napalm.plugins.tasks import napalm_get
-
-# nr = InitNornir(config_file="config.yaml")
-
-# results = nr.run(task=napalm_get, getters=["get_facts"])
-
-# # Paso 1: Extraer la información relevante para la serialización
-# data_to_serialize = {}
-# for hostname, result in results.items():
-#     data_to_serialize[hostname] = result[0].result
-
-# # Paso 2: Convertir los datos a formato JSON
-# data_json = json.dumps(data_to_serialize, indent=4)
-
-# # Paso 3: Escribir los datos en el archivo "result.json"
-# with open('result.json', 'w') as archivo:
-#     archivo.write(data_json)
-
-# ********************************************************************************
 import json
 from nornir import InitNornir
 from nornir_napalm.plugins.tasks import napalm_get
 from nornir_utils.plugins.functions import print_result
+
+from nornir import InitNornir
+from nornir_netmiko import netmiko_send_config
+
 
 def serialize_results_to_json(config_file="/home/kevin/junos-networkAutomation/proyectnornir/config.yaml"):
     # Paso 1: Inicializar Nornir con el archivo de configuración
@@ -71,5 +28,49 @@ def serialize_results_to_json(config_file="/home/kevin/junos-networkAutomation/p
     with open('/home/kevin/junos-networkAutomation/proyectnornir/result.json', 'w') as archivo:
         archivo.write(data_json)
 
-# Uso de la función
-# serialize_results_to_json()
+
+# def create_user(name_user, password_user):
+#     # Inicializa Nornir
+#     nr = InitNornir(config_file="/home/kevin/junos-networkAutomation/proyectnornir/config.yaml")
+
+#     # Comandos para crear el usuario y configurar el dispositivo
+#     commands = [
+#         f"set system login user {name_user} uid 2020 class super-user",
+#         f'set system login user {name_user} full-name "usuario administrador"',
+#         f"set system login user {name_user} authentication plain-text-password-value {password_user}",
+#         "commit",
+#     ]
+
+#     # Ejecuta la tarea en el dispositivo
+#     result = nr.run(task=netmiko_send_config, config_commands=commands)
+
+#     # Puedes verificar la salida si lo deseas
+#     print(result)
+
+
+def create_user(name_user, password_user, permiso):
+    # Inicializa Nornir
+    nr = InitNornir(config_file="/home/kevin/junos-networkAutomation/proyectnornir/config.yaml")
+
+    if permiso == 'admin':
+        # Comandos para crear el usuario y configurar el dispositivo
+        commands = [
+            f"set system login user {name_user} uid 2020 class super-user",
+            f'set system login user {name_user} full-name "usuario administrador"',
+            f"set system login user {name_user} authentication plain-text-password-value {password_user}",
+            "commit",
+        ]
+    else:
+        commands = [
+            f"set system login user {name_user} uid 2020 class operator",
+            f'set system login user {name_user} full-name "usuario operador"',
+            f"set system login user {name_user} authentication plain-text-password-value {password_user}",
+            "commit",
+        ]
+
+    # Ejecuta la tarea en el dispositivo
+    result = nr.run(task=netmiko_send_config, config_commands=commands)
+
+    # Puedes verificar la salida si lo deseas
+    print(result)
+

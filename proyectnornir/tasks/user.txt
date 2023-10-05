@@ -1,0 +1,26 @@
+configure 
+Entering configuration mode
+
+{master:0}[edit]
+admin-else@nuevo_nombre_switch#set system login user admin-ulises uid 2020 class super-user 
+
+{master:0}[edit]
+admin-else@nuevo_nombre_switch# set system login user admin-ulises full-name "usuario administrador" 
+
+{master:0}[edit]
+admin-else@nuevo_nombre_switch# set system login user admin-ulises authentication plain-text-password-value juniper123 
+
+{master:0}[edit]
+admin-else@nuevo_nombre_switch# commit 
+warning: Users admin-else2 and admin-else have the same UID 2000
+warning: Users admin-kegura and admin-jair have the same UID 2020
+warning: Users admin-ulises and admin-jair have the same UID 2020
+configuration check succeeds
+commit complete
+
+{master:0}[edit]
+admin-else@nuevo_nombre_switch# exit configuration-mode 
+Exiting configuration mode
+
+{master:0}
+admin-else@nuevo_nombre_switch> 

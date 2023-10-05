@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from proyectnornir.tasks.main import serialize_results_to_json  # Importa la función saludo desde saludo.py
+from proyectnornir.tasks.main import serialize_results_to_json, create_user  # Importa la función saludo desde saludo.py
 from funcionesnornir.create_hosts import create_hosts_yaml
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -213,3 +213,31 @@ def list_users_nornir(request):
     usersnornir = list(User.objects.values())
     data = {'usuarios_nornir': usersnornir}
     return JsonResponse(data)
+
+
+def config(request):
+    path_hosts_switches = 'proyectnornir/inventory/switches.yaml'
+    list_selecction = []
+
+    if request.method == 'POST':
+        switch1 = request.POST.get('switch1')
+        switch2 = request.POST.get('switch2') 
+
+        name_user = request.POST.get('username')
+        password_user = request.POST.get('password')
+
+        permiso = request.POST.get('permiso')
+
+        list_selecction.append(switch1)
+        list_selecction.append(switch2)
+
+        print(switch1, switch2, name_user, password_user, permiso)   
+
+        create_hosts_yaml(list_selecction, path_hosts_switches)
+
+        # Llama a la función para crear el usuario y configurar el dispositivo
+        create_user(name_user, password_user, permiso)
+
+        # return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
+        return redirect('config')
+    return render(request, 'config.html')

@@ -19,4 +19,5 @@ urlpatterns = [
     path('logout1/', views.LogoutPage, name="logout1"),
     path('usersnornir2/', views.users_nornir, name="usersnornir2"),
     path('listusersnornir2/', views.list_users_nornir, name="listusersnornir2"),
+    path('config/', views.config, name="config"),
 ]
