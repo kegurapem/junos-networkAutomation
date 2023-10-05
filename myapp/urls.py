@@ -17,4 +17,6 @@ urlpatterns = [
     path('signup1/', views.SignupPage, name="signup1"),
     path('login1/', views.LoginPage, name="login1"),
     path('logout1/', views.LogoutPage, name="logout1"),
+    path('usersnornir2/', views.users_nornir, name="usersnornir2"),
+    path('listusersnornir2/', views.list_users_nornir, name="listusersnornir2"),
 ]

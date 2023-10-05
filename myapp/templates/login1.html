@@ -7,8 +7,9 @@
 </head>
 <body>
     <form method="post">
-        <h3>Login Here</h3>
         {% csrf_token %} 
+        <h3>Login Here</h3>
+        
         <label for="username">Username</label>
         <input type="text" placeholder="Usuario" id="username" name="username">
 

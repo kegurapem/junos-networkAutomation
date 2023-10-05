@@ -142,8 +142,13 @@ def list_usuarios_norrnir(request):
 
 # ---- A partir de aquí correo el código funcional ordenado ----
 
+# def HomePage(request):
+#     return render(request, 'home1.html')
+
+
 def HomePage(request):
-    return render(request, 'home1.html')
+    my_user = request.user  # Obtiene al usuario actual
+    return render(request, 'home1.html', {'my_user': my_user})
 
 
 def SignupPage(request):
@@ -160,6 +165,18 @@ def SignupPage(request):
 
         my_user = User.objects.create_user(name, lastname1, password1)
         my_user.save()
+
+        print(permiso)
+        if permiso == 'admin':
+            my_user = User.objects.get(username = name)
+            my_user.is_staff = True
+            my_user.is_superuser = True
+            my_user.save()
+        else:
+            print('EL USUARIO NO ES ADMINISTRADOR')
+
+
+        
 
         return redirect('login1')
 
@@ -185,3 +202,14 @@ def LoginPage(request):
 def LogoutPage(request):
     logout(request)
     return redirect('login1')
+
+
+# Funciones para listar usuarios en la interfaz usuarios_nornir.html - en la ruta http://127.0.0.1:8000/usersnornir2/
+def users_nornir(request):
+    return render(request, 'users_nornir.html')
+
+
+def list_users_nornir(request):
+    usersnornir = list(User.objects.values())
+    data = {'usuarios_nornir': usersnornir}
+    return JsonResponse(data)

@@ -13,32 +13,6 @@
 </head>
 <body>
     <main class="container-main">
-        {% comment %} <div class="json-content">
-            <pre>
-                <code>
-                    {% for key, value in json_content.items %}
-                        {{ key }}: 
-                        <br>
-                        {% for k, v in value.get_facts.items %}
-                            &emsp; {{ k }}: {{ v }}<br>
-                        {% endfor %}
-                    {% endfor %}
-                </code>
-            </pre>
-        </div>
-        <hr>
-        <div class="json-content">
-                <code>
-                    {% for key, value in json_content.items %}
-                        {{ key }}: 
-                        <br>
-                        {% for k, v in value.get_facts.items %}
-                            &emsp; {{ k }}: {{ v }}<br>
-                        {% endfor %}
-                    {% endfor %}
-        </div> {% endcomment %}
-        
-
         <div class="formSwitch">
             <h1>Descargar archivo</h1>
                 <hr>
@@ -57,30 +31,3 @@
 </body>
 </html>
 {% endblock content %}
-
-
-{% comment %} 
-{% extends 'layouts/base.html' %}
-
-{% load static %}
-
-{% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download</title>
-</head>
-<body>
-    <main class="container-main">
-        <div class="formSwitch">
-            <h1>Descargar archivo</h1>
-                <a href="{% url 'download_json' %}" download="archivo.json">
-                    <button>Descargar</button>
-                </a>
-        </div>
-    </main>
-</body>
-</html>
-{% endblock content %} {% endcomment %}
