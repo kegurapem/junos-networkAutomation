@@ -8,12 +8,18 @@ const listUsersNornir = async () => {
 
         let content = ``
         data.usuarios_nornir.forEach((user, index) => {
+            let staffRole = '';
+            if (user.is_staff == true) {
+                staffRole = "administrador";
+            } else {
+                staffRole = "consultor";
+            }
             content += `
                 <tr>
                     <td>${index+1}</td>
                     <td>${user.username}</td>
                     <td>${user.last_name}</td>
-                    <td>${user.is_staff}</td>
+                    <td>${staffRole}</td>
                 </tr>
             `
         })

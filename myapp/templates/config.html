@@ -1,4 +1,4 @@
-{% extends 'layouts/base.html' %}
+{% extends 'layouts/base-admin.html' %}
 
 {% load static %}
 
@@ -9,33 +9,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
     <title>Document</title>
 </head>
 <body>
     <main class="container-main">
         <div class="formSwitch">
-            <h1>Interfaz de Configuración</h1>
-                <form method="post">
+            <h1>Crear usuarios en los switch listados</h1>
+                <form method="post" class = "form-config">
                     {% csrf_token %}
-                    <input type="checkbox" name="switch1" value="10.1.8.131">
-                    <label for="switch1">Switch-1</label><br>
+                    <div class="div-form-config">
+                        <input type="checkbox" name="switch1" value="10.1.8.131">
+                        <label for="switch1">Switch-1</label><br>
 
-                    <input type="checkbox" name="switch2" value="10.1.8.132">
-                    <label for="switch2">Switch-2</label><br>
-
-                    <label for="username">Username</label>
-                    <input type="text" placeholder="Usuario" id="username" name="username">
-
-                    <label for="password">Password</label>
-                    <input type="password" placeholder="Password" id="password" name="password">
-
-                    <label for="administrator">Administrador</label>
-                    <input type="radio" name="permiso" id="administrator" value="admin">
-                    
-                    <label for="viewer">Visor</label>    
-                    <input type="radio" name="permiso" id="viewer" value="viewer">
-                    
-                    <button type="submit" id="sent">Enviar</button>
+                        <input type="checkbox" name="switch2" value="10.1.8.132">
+                        <label for="switch2">Switch-2</label><br>
+                    </div>
+                    <hr>
+                    <div class="div-form-config">
+                        <label for="username">Username</label>
+                        <input type="text" placeholder="Usuario" id="username" name="username">
+                    </div>
+                    <div class="div-form-config">
+                        <label for="password">Password</label>
+                        <input type="password" placeholder="Password" id="password" name="password">
+                    </div>
+                    <hr>
+                    <div class="div-form-config">
+                        <input type="radio" name="permiso" id="administrator" value="admin">
+                        <label for="administrator">Administrador</label>
+                    </div>     
+                    <div class="div-form-config">
+                        <input type="radio" name="permiso" id="viewer" value="viewer">
+                        <label for="viewer">Visor</label>    
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary" id="sent">Enviar</button>
+                    </div>   
+                    {% comment %} <button type="submit" id="sent">Enviar</button> {% endcomment %}
                 </form>
         </div>
     </main>

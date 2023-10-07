@@ -1,0 +1,11 @@
+.form-config {
+    border: 0.5px solid rgb(234, 225, 225);
+    padding: 10px;
+}
+
+.div-form-config {
+    padding: 4px;
+}
+hr {
+    border-color: rgb(23, 23, 23);
+}

@@ -1,4 +1,4 @@
-{% extends 'layouts/base.html' %}
+{% extends 'layouts/base-admin.html' %}
 
 {% load static %}
 
@@ -22,13 +22,13 @@
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="table-responsive">
                     <table id="datatable-usersnornir" class = "table">
-                        <caption>Django + DataTable.js</caption>
+                        <caption>Lista de usuarios creados en los Switches</caption>
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>nombre</th>
-                                <th>apellidos</th>
-                                <th>administrador</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Permiso</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody_usersnornir"></tbody>

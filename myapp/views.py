@@ -146,9 +146,14 @@ def list_usuarios_norrnir(request):
 #     return render(request, 'home1.html')
 
 
+# def HomePage(request):
+#     my_user = request.user  # Obtiene al usuario actual
+#     return render(request, 'home1.html', {'my_user': my_user})
+
 def HomePage(request):
-    my_user = request.user  # Obtiene al usuario actual
-    return render(request, 'home1.html', {'my_user': my_user})
+    my_user = request.user  # Asegúrate de que user esté disponible en el contexto.
+    template_name = 'layouts/base-admin.html' if my_user.is_authenticated and my_user.is_staff else 'layouts/base-consultor.html'
+    return render(request, 'home1.html', {'my_user': my_user, 'template_name': template_name})
 
 
 def SignupPage(request):
@@ -241,5 +246,5 @@ def config(request):
             my_user.save()
 
         # return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
-        return redirect('config')
+        return redirect('usersnornir2')
     return render(request, 'config.html')
