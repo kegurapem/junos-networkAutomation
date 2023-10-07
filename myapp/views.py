@@ -163,20 +163,13 @@ def SignupPage(request):
         if password1 != password2:
             return HttpResponse("Your password and confrom password are not same")
 
-        my_user = User.objects.create_user(name, lastname1, password1)
-        my_user.save()
-
         print(permiso)
         if permiso == 'admin':
-            my_user = User.objects.get(username = name)
-            my_user.is_staff = True
-            my_user.is_superuser = True
+            my_user = User.objects.create_superuser(name, lastname1, password1)
             my_user.save()
         else:
-            print('EL USUARIO NO ES ADMINISTRADOR')
-
-
-        
+            my_user = User.objects.create_user(name, lastname1, password1)
+            my_user.save()
 
         return redirect('login1')
 
@@ -235,8 +228,17 @@ def config(request):
 
         create_hosts_yaml(list_selecction, path_hosts_switches)
 
-        # Llama a la función para crear el usuario y configurar el dispositivo
+        # Crear usuario en el switch
         create_user(name_user, password_user, permiso)
+
+        # Crear usuario en la BD
+        print(permiso)
+        if permiso == 'admin':
+            my_user = User.objects.create_superuser(name_user, "", password_user)
+            my_user.save()
+        else:
+            my_user = User.objects.create_user(name_user, "", password_user)
+            my_user.save()
 
         # return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
         return redirect('config')
