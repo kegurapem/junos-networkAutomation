@@ -1,7 +1,6 @@
 {% extends 'layouts/base-admin.html' %}
 {% load static %}
 {% block content %}
-{% comment %} <body> {% endcomment %}
     {% if my_user.is_staff %}
     <!-- Navbar -->
     <div class="container">
@@ -40,9 +39,6 @@
             <!-- Centro el contenido del navbar usando flexbox -->
             <div class="d-flex justify-content-center w-100">
                 <ul class="navbar-nav">
-                    {% comment %} <li class="nav-item">
-                        <a class="nav-link" href="#">CONFIGURAR</a>
-                    </li> {% endcomment %}
                     <li class="nav-item">
                         <a class="nav-link"  href="{% url 'index' %}">Visualizar</a>
                     </li>
@@ -84,5 +80,4 @@
         </div>
     </div>
     {% endif %}
-{% comment %} </body> {% endcomment %}
 {% endblock content %}
