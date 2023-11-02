@@ -4,11 +4,29 @@ switch.access-01:
     groups:
         - junos_group_cusco
     data:
-        layer: 'layer 2'
+        layer: layer 2
+        os: junos
+        description: EX3400-48T
+        model: 18.2R3-S2.9
+        serial: NX1220170676
+        role: access
+        site: cusco
+        connection_options:
+            port: 22
+            port_management: "{{hostname}}"
 
 switch.access-02:
     hostname: 10.1.8.132
     groups:
         - junos_group_cusco
     data:
-        layer: 'layer 2'
+        layer: layer 2
+        os: junos
+        model: EX3400-48T
+        version: 18.2R3-S2.9
+        serial: NX1220170676
+        role: access
+        site: cusco
+        connection_options:
+            port: 22
+            port_management: "{{hostname}}"
