@@ -1,7 +1,5 @@
 {% extends 'layouts/base-admin.html' %}
-
 {% load static %}
-
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -9,9 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
     <title>Document</title>
-    {% comment %} <link rel="stylesheet" href="style.css"> {% endcomment %}
-    {% comment %} <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> {% endcomment %}
 </head>
 <body>
     <main class="container-main">
@@ -19,6 +16,7 @@
             <h1>Interfaz de Configuración</h1>
                 <form method="post">
                     {% csrf_token %}
+                    <h5>Seleccione uno o ambos switches</h5>
                     <div class="div-form-config">
                         <input type="checkbox" name="switch1" value="10.1.8.131">
                         <label for="switch1">Switch-1</label><br>
@@ -27,6 +25,7 @@
                         <label for="switch2">Switch-2</label><br>
                     </div>
                     <hr>
+                    <h5>Seleccione una operación</h5>
                     <div class="div-form-config">
                         <input type="radio" name="getconfig" id="get_facts" value="get_facts">
                         <label for="get_facts">get_facts</label>
@@ -35,11 +34,11 @@
                         <input type="radio" name="getconfig" id="getbackup" value="get_backup">
                         <label for="getbackup">get_backup</label>    
                     </div>
-                    {% comment %} <input type="checkbox" name="switch1" value="10.1.8.131">
-                    <label for="switch1">Switch-1</label><br>
-                    <input type="checkbox" name="switch2" value="10.1.8.132">
-                    <label for="switch2">Switch-2</label><br> {% endcomment %}
-                    <button type="submit" id="sent">Obtener</button>
+                    <hr>
+                    {% comment %} <button type="submit" id="sent">Obtener</button> {% endcomment %}
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary" id="sent">Obtener</button>
+                    </div> 
                 </form>
         </div>
     </main>

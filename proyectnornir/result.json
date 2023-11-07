@@ -7,7 +7,7 @@
             "os_version": "18.2R3-S2.9",
             "hostname": "SW_JUNIPER01_DC_GAB.TELECOM",
             "fqdn": "SW_JUNIPER01_DC_GAB.TELECOM",
-            "uptime": 7857933.0,
+            "uptime": 7947752.0,
             "interface_list": [
                 "ge-0/0/0",
                 "pfe-0/0/0",
@@ -88,7 +88,7 @@
             "os_version": "18.2R3-S4.1",
             "hostname": "",
             "fqdn": "",
-            "uptime": 8391160.0,
+            "uptime": 8480978.0,
             "interface_list": [
                 "ge-0/0/0",
                 "pfe-0/0/0",

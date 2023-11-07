@@ -14,8 +14,9 @@
     <main class="container-main">
         <div class="formSwitch">
             <h1>Crear usuarios en los switch listados</h1>
-                <form method="post" class = "form-config">
+                <form method="post" >
                     {% csrf_token %}
+                    <h5>Seleccione uno o ambos switches</h5>
                     <div class="div-form-config">
                         <input type="checkbox" name="switch1" value="10.1.8.131">
                         <label for="switch1">Switch-1</label><br>
@@ -24,6 +25,7 @@
                         <label for="switch2">Switch-2</label><br>
                     </div>
                     <hr>
+                    <h5>Ingrese el usuario y contraseña que desea crear</h5>
                     <div class="div-form-config">
                         <label for="username">Username</label>
                         <input type="text" placeholder="Usuario" id="username" name="username">
@@ -33,6 +35,7 @@
                         <input type="password" placeholder="Password" id="password" name="password">
                     </div>
                     <hr>
+                    <h5>Seleccione una opción como permiso</h5>
                     <div class="div-form-config">
                         <input type="radio" name="permiso" id="administrator" value="admin">
                         <label for="administrator">Administrador</label>
@@ -41,6 +44,7 @@
                         <input type="radio" name="permiso" id="viewer" value="viewer">
                         <label for="viewer">Visor</label>    
                     </div>
+                    <hr>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary" id="sent">Enviar</button>
                     </div>   
