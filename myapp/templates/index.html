@@ -1,4 +1,4 @@
-{% extends 'layouts/base.html' %}
+{% extends 'layouts/base-admin.html' %}
 
 {% load static %}
 
@@ -19,11 +19,27 @@
             <h1>Interfaz de Configuración</h1>
                 <form method="post">
                     {% csrf_token %}
-                    <input type="checkbox" name="switch1" value="10.1.8.131">
+                    <div class="div-form-config">
+                        <input type="checkbox" name="switch1" value="10.1.8.131">
+                        <label for="switch1">Switch-1</label><br>
+
+                        <input type="checkbox" name="switch2" value="10.1.8.132">
+                        <label for="switch2">Switch-2</label><br>
+                    </div>
+                    <hr>
+                    <div class="div-form-config">
+                        <input type="radio" name="getconfig" id="get_facts" value="get_facts">
+                        <label for="get_facts">get_facts</label>
+                    </div>     
+                    <div class="div-form-config">
+                        <input type="radio" name="getconfig" id="getbackup" value="get_backup">
+                        <label for="getbackup">get_backup</label>    
+                    </div>
+                    {% comment %} <input type="checkbox" name="switch1" value="10.1.8.131">
                     <label for="switch1">Switch-1</label><br>
                     <input type="checkbox" name="switch2" value="10.1.8.132">
-                    <label for="switch2">Switch-2</label><br>
-                    <button type="submit" id="sent">Enviar</button>
+                    <label for="switch2">Switch-2</label><br> {% endcomment %}
+                    <button type="submit" id="sent">Obtener</button>
                 </form>
         </div>
     </main>

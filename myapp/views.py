@@ -21,11 +21,17 @@ def mi_vista(request):
         list_selecction.append(switch1)
         list_selecction.append(switch2)
 
+        getconfig = request.POST.get('getconfig')
+
         print(switch1)   
         print(switch2)
 
         create_hosts_yaml(list_selecction, path_hosts_switches)
-        serialize_results_to_json()
+
+        if getconfig == 'get_facts':
+            serialize_results_to_json()
+        else:
+            pass
 
         # return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
         return redirect('download')

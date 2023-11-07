@@ -20,13 +20,13 @@ switch.access-02:
     connection_options:
       port: 22
       port_management: '{{hostname}}'
-    description: EX3400-48T
     layer: layer 2
-    model: 18.2R3-S2.9
+    model: EX3400-48T
     os: junos
     role: access
     serial: NX1220170676
     site: cusco
+    version: 18.2R3-S2.9
   groups:
   - junos_group_cusco
   hostname: 10.1.8.132
