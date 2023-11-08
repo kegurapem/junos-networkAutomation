@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from proyectnornir.tasks.main import serialize_results_to_json, create_user  # Importa la función saludo desde saludo.py
+from proyectnornir.tasks.main import serialize_results_to_json, create_user, save_config_to_file  # Importa la función saludo desde saludo.py
 from funcionesnornir.create_hosts import create_hosts_yaml
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -25,13 +25,15 @@ def mi_vista(request):
 
         print(switch1)   
         print(switch2)
+        print(getconfig)
 
         create_hosts_yaml(list_selecction, path_hosts_switches)
 
         if getconfig == 'get_facts':
             serialize_results_to_json()
         else:
-            pass
+            print('Backup Exitoso')
+            save_config_to_file()
 
         # return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
         return redirect('download')

@@ -15,14 +15,14 @@
     <!-- Navbar con diseño Bootstrap personalizado -->
     <nav class="navbar navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home1' %}">Inicio</a>
+            {% comment %} <a class="navbar-brand" href="{% url 'home1' %}">Inicio</a> {% endcomment %}
             <a class="navbar-brand" href="{% url 'configuration' %}">Obtener configuración</a>
-            <a class="navbar-brand" href="{% url 'config' %}">Configurar</a>
-            <a class="navbar-brand" href="{% url 'signup1' %}">Signup</a>
-            <a class="navbar-brand" href="{% url 'login1' %}">Login</a>
+            {% comment %} <a class="navbar-brand" href="{% url 'config' %}">Configurar</a> {% endcomment %}
+            {% comment %} <a class="navbar-brand" href="{% url 'signup1' %}">Signup</a> {% endcomment %}
+            {% comment %} <a class="navbar-brand" href="{% url 'login1' %}">Login</a> {% endcomment %}
             <a class="navbar-brand" href="{% url 'download' %}">Descargar</a>
-            <a class="navbar-brand" href="{% url 'usersnornir' %}">Listar Usuarios</a>
-            <a href="{% url 'logout' %}" class="btn btn-primary">Cerrar Sesión</a>
+            {% comment %} <a class="navbar-brand" href="{% url 'usersnornir' %}">Listar Usuarios</a> {% endcomment %}
+            {% comment %} <a href="{% url 'logout' %}" class="btn btn-primary">Cerrar Sesión</a> {% endcomment %}
         </div>
     </nav>
     <main class="container mt-4">

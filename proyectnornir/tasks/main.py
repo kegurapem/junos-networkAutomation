@@ -6,6 +6,12 @@ from nornir_utils.plugins.functions import print_result
 from nornir import InitNornir
 from nornir_netmiko import netmiko_send_config
 
+from nornir_netmiko.tasks import netmiko_send_command
+import datetime
+
+
+
+
 
 def serialize_results_to_json(config_file="/home/kevin/junos-networkAutomation/proyectnornir/config.yaml"):
     # Paso 1: Inicializar Nornir con el archivo de configuración
@@ -55,3 +61,21 @@ def create_user(name_user, password_user, permiso):
     # Puedes verificar la salida si lo deseas
     print(result)
 
+
+def save_config_to_file():
+    # Inicializa Nornir
+    nr = InitNornir(config_file="/home/kevin/junos-networkAutomation/proyectnornir/config.yaml")
+
+    # Comando a ejecutar
+    command = "show configuration | display set"
+
+    # Ejecuta el comando en los dispositivos y guarda la salida
+    timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+    # output_file = f"config_output_{timestamp}.txt"
+    output_file = f"/home/kevin/junos-networkAutomation/proyectnornir/config_output_{timestamp}.txt"
+
+
+    for host, result in nr.run(task=netmiko_send_command, command_string=command).items():
+        with open(output_file, "a") as file:
+            file.write(f"=== Host: {host} ===\n")
+            file.write(result.result)
