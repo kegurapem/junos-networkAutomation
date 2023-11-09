@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from proyectnornir.tasks.main import serialize_results_to_json, create_user, save_config_to_file  # Importa la función saludo desde saludo.py
+from proyectnornir.tasks.main import serialize_results_to_json, create_user, save_config_to_file, create_backup_zip, loadFactoryDefault
 from funcionesnornir.create_hosts import create_hosts_yaml
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -33,7 +33,9 @@ def mi_vista(request):
             serialize_results_to_json()
         else:
             print('Backup Exitoso')
-            save_config_to_file()
+            save_config_to_file(list_selecction)
+
+            return redirect('downloadbackup')
 
         # return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
         return redirect('download')
@@ -43,6 +45,9 @@ def mi_vista(request):
 
 def download(request):
     return render(request, 'download.html')
+
+def downloadbackup(request):
+    return render(request, 'downloadbackup.html')
 
 
 def HomePage(request):
@@ -91,7 +96,6 @@ def LogoutPage(request):
     return redirect('login')
 
 
-
 def descargar_json(request):
     ruta = "/home/kevin/junos-networkAutomation/proyectnornir/"
     nombre_archivo = "result.json"
@@ -110,9 +114,6 @@ def descargar_json(request):
                 return response
         else:
             return HttpResponse('El archivo no se encontró', status=404)
-
-        # return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
-        # return redirect('download')
     else:
         json_file_path = '/home/kevin/junos-networkAutomation/proyectnornir/result.json' 
         if os.path.exists(json_file_path):
@@ -121,10 +122,32 @@ def descargar_json(request):
                 print(json_content)
             return render(request, 'download.html', {'json_content': json_content})
         else:
-            # return HttpResponse('El archivo no se encontró', status=404)
             return render(request, 'download.html')
-    # return render(request, 'download.html')
 
+
+def download_backup(request):
+    ruta = "/home/kevin/junos-networkAutomation/proyectnornir/backup"
+
+    if request.method == 'POST':
+        # Llama a la función para crear el archivo ZIP
+        backup_zip_file = create_backup_zip()
+
+        # Ruta al archivo ZIP
+        backup_zip_path = os.path.abspath(backup_zip_file)
+
+        if os.path.exists(backup_zip_path):
+            # Configura la respuesta HTTP
+            with open(backup_zip_path, 'rb') as zip_file:
+                response = HttpResponse(zip_file.read(), content_type='application/zip')
+                response['Content-Disposition'] = f'attachment; filename="{os.path.basename(backup_zip_path)}"'
+            return response
+        else:
+            return HttpResponse('El archivo ZIP no se encontró', status=404)
+    else:
+        if os.path.exists(ruta) and os.path.isdir(ruta):
+            return render(request, 'downloadbackup.html', {'backup': 'Backup disponible'})
+        else:
+            return render(request, 'downloadbackup.html', {'backup': 'Backup no disponible'})
 
 
 def existe_json(ruta, nombre_archivo):
@@ -148,15 +171,6 @@ def list_usuarios_norrnir(request):
     data = {'usuarios_nornir': usersnornir}
     return JsonResponse(data)
 
-# ---- A partir de aquí correo el código funcional ordenado ----
-
-# def HomePage(request):
-#     return render(request, 'home1.html')
-
-
-# def HomePage(request):
-#     my_user = request.user  # Obtiene al usuario actual
-#     return render(request, 'home1.html', {'my_user': my_user})
 
 def HomePage(request):
     my_user = request.user  # Asegúrate de que user esté disponible en el contexto.
@@ -256,3 +270,18 @@ def config(request):
         # return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
         return redirect('usersnornir2')
     return render(request, 'config.html')
+
+
+def factoryDefault(request):
+    if request.method == 'POST':
+        passwor_root = request.POST.get('root')
+        name_user = request.POST.get('username')
+        password_user = request.POST.get('password')
+        ip = request.POST.get('ip')
+        netmask = request.POST.get('netmask')
+
+        print(passwor_root, name_user, password_user, ip, netmask)
+        loadFactoryDefault(passwor_root, name_user, password_user, ip, netmask)
+    return render (request, 'factoryDefault.html')
+
+

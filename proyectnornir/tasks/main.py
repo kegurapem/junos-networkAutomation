@@ -7,8 +7,11 @@ from nornir import InitNornir
 from nornir_netmiko import netmiko_send_config
 
 from nornir_netmiko.tasks import netmiko_send_command
-import datetime
-
+# import datetime
+# from django.db.models import F
+import os
+import shutil
+import zipfile
 
 
 
@@ -61,21 +64,80 @@ def create_user(name_user, password_user, permiso):
     # Puedes verificar la salida si lo deseas
     print(result)
 
-
-def save_config_to_file():
+def loadFactoryDefault(password_root, name_user, password_user, ip, netmask):
     # Inicializa Nornir
     nr = InitNornir(config_file="/home/kevin/junos-networkAutomation/proyectnornir/config.yaml")
+
+    commands = [
+        f"load factory-default",
+        f"set system root-authentication plain-text-password-value {password_root}",
+        f"set system login user {name_user} uid 2000 class super-user",
+        f'set system login user {name_user} full-name "usuario administrador"',
+        f"set system login user {name_user} authentication plain-text-password-value {password_user}",
+        f"set system services ssh",
+        f"set system services netconf ssh",
+        f"set interfaces me0 unit 0 family inet address {ip}/{netmask}",
+        "commit",
+        ]
+
+    # Ejecuta la tarea en el dispositivo
+    result = nr.run(task=netmiko_send_config, config_commands=commands)
+
+    # Puedes verificar la salida si lo deseas
+    print(result)
+
+
+def save_config_to_file(ip_list):
+    # Directorio base
+    base_directory = "/home/kevin/junos-networkAutomation/proyectnornir"
+    backup_directory = os.path.join(base_directory, "backup")
+
+    # Verificar si la carpeta de respaldo existe; si existe, elimínala
+    if os.path.exists(backup_directory):
+        shutil.rmtree(backup_directory)
+
+    # Crea una carpeta de respaldo limpia
+    os.makedirs(backup_directory)
+
+    # Inicializa Nornir
+    nr = InitNornir(config_file=os.path.join(base_directory, "config.yaml"))
 
     # Comando a ejecutar
     command = "show configuration | display set"
 
-    # Ejecuta el comando en los dispositivos y guarda la salida
-    timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-    # output_file = f"config_output_{timestamp}.txt"
-    output_file = f"/home/kevin/junos-networkAutomation/proyectnornir/config_output_{timestamp}.txt"
+    for ip in ip_list:
+        # Genera un nombre de archivo único basado en la dirección IP
+        output_file = os.path.join(backup_directory, f"backup_{ip}.txt")
+
+        # Filtra el host correspondiente a la dirección IP en la lista
+        filtered_host = nr.filter(hostname=ip)  # Filtro directo por la dirección IP
+
+        for __, result in filtered_host.run(task=netmiko_send_command, command_string=command).items():
+            with open(output_file, "w") as file:
+                file.write(result.result)
 
 
-    for host, result in nr.run(task=netmiko_send_command, command_string=command).items():
-        with open(output_file, "a") as file:
-            file.write(f"=== Host: {host} ===\n")
-            file.write(result.result)
+
+
+
+def create_backup_zip():
+    # Directorio base donde se encuentra la carpeta "backup"
+    base_directory = "/home/kevin/junos-networkAutomation/proyectnornir"
+
+    # Nombre del archivo ZIP de respaldo
+    backup_zip_file = "backup.zip"
+
+    # Ruta a la carpeta de respaldo
+    backup_directory = os.path.join(base_directory, "backup")
+
+    # Crear un archivo ZIP que contiene la carpeta de respaldo y su contenido
+    with zipfile.ZipFile(backup_zip_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, _, files in os.walk(backup_directory):
+            for file in files:
+                file_path = os.path.join(root, file)
+                arcname = os.path.relpath(file_path, backup_directory)
+                zipf.write(file_path, arcname)
+
+    return backup_zip_file
+
+

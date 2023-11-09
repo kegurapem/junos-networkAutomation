@@ -42,21 +42,5 @@
                 </form>
         </div>
     </main>
-
-    {% comment %} <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> {% endcomment %}
-    {% comment %} <script src="{% static 'myapp/js/main.js' %}"></script> {% endcomment %}
-    {% comment %} <script>
-        // Agrega un evento clic al botón con id="enviar"
-        document.getElementById('enviar').addEventListener('click', function() {
-            // Llama a la función saludo usando Axios
-            axios.get('/saludo/')
-                .then(function(response) {
-                    console.log(response.data);
-                })
-                .catch(function(error) {
-                    console.error(error);
-                });
-        });
-    </script> {% endcomment %}
 </body>
 {% endblock content %}

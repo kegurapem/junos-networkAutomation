@@ -21,4 +21,7 @@ urlpatterns = [
     path('listusersnornir2/', views.list_users_nornir, name="listusersnornir2"),
     path('config/', views.config, name="config"),
     path('configuration', views.mi_vista, name="configuration"),
+    # path('downloadbackup', views.downloadbackup, name="downloadbackup"),
+    path('download_backup/', views.download_backup, name='downloadbackup'),
+     path('factorydefault', views.factoryDefault, name='factory'),
 ]

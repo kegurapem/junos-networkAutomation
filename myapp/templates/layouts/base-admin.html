@@ -15,14 +15,17 @@
     <!-- Navbar con diseño Bootstrap personalizado -->
     <nav class="navbar navbar-dark bg-primary">
         <div class="container">
-            {% comment %} <a class="navbar-brand" href="{% url 'home1' %}">Inicio</a> {% endcomment %}
-            <a class="navbar-brand" href="{% url 'configuration' %}">Obtener configuración</a>
-            {% comment %} <a class="navbar-brand" href="{% url 'config' %}">Configurar</a> {% endcomment %}
-            {% comment %} <a class="navbar-brand" href="{% url 'signup1' %}">Signup</a> {% endcomment %}
-            {% comment %} <a class="navbar-brand" href="{% url 'login1' %}">Login</a> {% endcomment %}
-            <a class="navbar-brand" href="{% url 'download' %}">Descargar</a>
-            {% comment %} <a class="navbar-brand" href="{% url 'usersnornir' %}">Listar Usuarios</a> {% endcomment %}
-            {% comment %} <a href="{% url 'logout' %}" class="btn btn-primary">Cerrar Sesión</a> {% endcomment %}
+            <a class="btn btn-primary" href="{% url 'home1' %}">Inicio</a>
+            <a class="btn btn-primary" href="{% url 'factory' %}">Configuración de fábrica</a>
+            <a class="btn btn-primary" href="{% url 'config' %}">Configurar Usuarios</a>
+            <a class="btn btn-primary" href="{% url 'configuration' %}">Obtener configuración</a>
+            {% comment %} <a class="btn btn-primary" href="{% url 'signup1' %}">Signup</a> {% endcomment %}
+            {% comment %} <a class="btn btn-primary" href="{% url 'login1' %}">Login</a> {% endcomment %}
+            {% comment %} <a class="btn btn-primary" href="{% url 'download' %}">Descargar</a> {% endcomment %}
+            {% comment %} <a class="btn btn-primary" href="{% url 'downloadbackup' %}">Descargar Backup</a> {% endcomment %}
+            <a class="btn btn-primary" href="{% url 'usersnornir' %}">Listar Usuarios</a>
+            
+            <a href="{% url 'logout' %}" class="btn btn-primary">Cerrar Sesión</a>
         </div>
     </nav>
     <main class="container mt-4">

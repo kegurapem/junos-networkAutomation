@@ -1,0 +1,75 @@
+{% extends 'layouts/base-admin.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <style>
+        .class-input {
+            display: block;
+            margin-bottom: 12px;
+        }
+        label {
+            display: inline-block;
+            margin-bottom: 0px;
+        }
+        hr {
+            background-color: black;
+          }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <main class="container-main">
+        <div class="formSwitch">
+            <h1>CONFIGURAR SWITCH DE FÁBRICA</h1>
+            <p>A continuación, se le solicitarán algunos datos para configurar el switch de fábrica con una preconfiguración que establecerá la interfaz de administración fuera de banda.</p>
+                <form method="post" >
+                    {% csrf_token %}
+                    <hr>
+                    <h5>Seleccione un switch</h5>
+                    <div class="div-form-config">
+                        <input type="radio" name="switchselected" id="switch1" value="10.1.8.131">
+                        <label for="switch1">Switch-1</label>
+                    </div>     
+                    <div class="div-form-config">
+                        <input type="radio" name="switchselected" id="switch2" value="10.1.8.132">
+                        <label for="switch2">Switch-2</label>    
+                    </div>
+                    <hr>
+                    <h5>Ingrese los datos solicitados</h5>
+                    <div class="div-main">
+                        <div class="div-form-config">
+                            <label for="username">Password root-authentication</label>
+                            <input class="class-input" type="password" placeholder="root-authentication" id="root" name="root">
+                        </div>
+                        <div class="div-form-config">
+                            <label for="username">Username</label>
+                            <input class="class-input" type="text" placeholder="Usuario" id="username" name="username">
+                        </div>
+                        <div class="div-form-config">
+                            <label for="password">Password</label>
+                            <input class="class-input" type="password" placeholder="Password" id="password" name="password">
+                        </div>
+                        <div class="div-form-config">
+                            <label for="password">IP</label>
+                            <input class="class-input" type="text" placeholder="IP" id="ip" name="ip">
+                        </div>
+                        <div class="div-form-config">
+                            <label for="password">Netmask</label>
+                            <input class="class-input" type="text" placeholder="Netmask" id="netmask" name="netmask">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary" id="sent">Enviar</button>
+                    </div>   
+                </form>
+        </div>
+    </main>
+</body>
+{% endblock content %}

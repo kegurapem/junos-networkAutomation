@@ -15,35 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    {% comment %} <form action="" method="post">  
-        {% csrf_token %}  
-        <h3>Signup Here</h3>
-        <div class="mb-3">
-            <label class="form-label" for="username">Username</label>
-            <input class="form-control" type="text" placeholder="Username" name="username" id="username">
-
-            <label class="form-label" for="email">Email</label>
-            <input class="form-control" type="email" placeholder="Email or Phone" name="email" id="email">
-
-            <label class="form-label" for="password1">Password</label>
-            <input class="form-control" type="password" placeholder="Password" id="password1" name="password1">
-
-            <label class="form-label" for="password2">Confrom Password</label>
-            <input class="form-control" type="password" placeholder="Confrom Password" id="password2" name="password2">
-
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="administrador" id="administrador">
-                <label class="form-check-label" for="administrador">Administrador</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="consultor" id="consultor">
-                <label class="form-check-label" for="consultor">Consultor</label>
-            </div>
-        </div>
-        <button class="btn btn-primary" type="submit">Signup</button>
-        
-        <a href="{% url 'login' %}" >i have already account</a>
-    </form> {% endcomment %}
     <h3>Registrarse Aquí</h3>
     <form>
         {% csrf_token %}
