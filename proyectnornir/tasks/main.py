@@ -117,9 +117,6 @@ def save_config_to_file(ip_list):
                 file.write(result.result)
 
 
-
-
-
 def create_backup_zip():
     # Directorio base donde se encuentra la carpeta "backup"
     base_directory = "/home/kevin/junos-networkAutomation/proyectnornir"

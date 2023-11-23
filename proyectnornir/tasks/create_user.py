@@ -1,28 +1,3 @@
-# from nornir import InitNornir
-# from nornir_netmiko import netmiko_send_config
-
-# def configure_user(task, new_password):
-#     # Comandos para configurar el usuario y establecer la contraseña
-#     commands = [
-#         "set system login user admin-kegura uid 2020 class super-user",
-#         'set system login user admin-kegura full-name "usuario administrador"',
-#         "set system login user admin-kegura authentication plain-text-password-value juniper123",
-#         "commit",
-#     ]
-
-#     # Envía los comandos al dispositivo utilizando Netmiko
-#     result = task.run(task=netmiko_send_config, config_commands=commands)
-
-#     # Puedes verificar la salida si lo deseas
-#     print(result[0].result)
-
-# # Inicializa Nornir
-# nr = InitNornir(config_file="/home/kevin/junos-networkAutomation/proyectnornir/config.yaml")
-
-# # Ejecuta la tarea en el dispositivo
-# result = nr.run(task=configure_user, new_password=new_password)
-
-
 from nornir import InitNornir
 from nornir_netmiko import netmiko_send_config
 

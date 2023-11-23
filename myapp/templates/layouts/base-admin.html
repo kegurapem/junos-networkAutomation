@@ -17,7 +17,7 @@
         <div class="container">
             <a class="btn btn-primary" href="{% url 'home1' %}">Inicio</a>
             <a class="btn btn-primary" href="{% url 'factory' %}">Configuración de fábrica</a>
-            <a class="btn btn-primary" href="{% url 'config' %}">Configurar Usuarios</a>
+            {% comment %} <a class="btn btn-primary" href="{% url 'config' %}">Configurar Usuarios</a> {% endcomment %}
             <a class="btn btn-primary" href="{% url 'configuration' %}">Obtener configuración</a>
             {% comment %} <a class="btn btn-primary" href="{% url 'signup1' %}">Signup</a> {% endcomment %}
             {% comment %} <a class="btn btn-primary" href="{% url 'login1' %}">Login</a> {% endcomment %}

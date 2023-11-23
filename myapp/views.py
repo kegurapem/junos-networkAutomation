@@ -267,6 +267,7 @@ def config(request):
             my_user = User.objects.create_user(name_user, "", password_user)
             my_user.save()
 
+        print(my_user.is_superuser)
         # return render(request, 'resultado.html', {'switch1': switch1, 'switch2': switch2})
         return redirect('usersnornir2')
     return render(request, 'config.html')
