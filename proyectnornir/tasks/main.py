@@ -16,7 +16,7 @@ import zipfile
 
 
 
-def serialize_results_to_json(config_file="/home/kevin/junos-networkAutomation/proyectnornir/config.yaml"):
+def serialize_results_to_json(config_file="/home/kevin/github/junos-networkAutomation/proyectnornir/config.yaml"):
     # Paso 1: Inicializar Nornir con el archivo de configuración
     nr = InitNornir(config_file=config_file)
 
@@ -34,13 +34,13 @@ def serialize_results_to_json(config_file="/home/kevin/junos-networkAutomation/p
     data_json = json.dumps(data_to_serialize, indent=4)
 
     # Paso 5: Escribir los datos en el archivo "result.json"
-    with open('/home/kevin/junos-networkAutomation/proyectnornir/result.json', 'w') as archivo:
+    with open('/home/kevin/github/junos-networkAutomation/proyectnornir/result.json', 'w') as archivo:
         archivo.write(data_json)
 
 
 def create_user(name_user, password_user, permiso):
     # Inicializa Nornir
-    nr = InitNornir(config_file="/home/kevin/junos-networkAutomation/proyectnornir/config.yaml")
+    nr = InitNornir(config_file="/home/kevin/github/junos-networkAutomation/proyectnornir/config.yaml")
 
     if permiso == 'admin':
         # Comandos para crear el usuario y configurar el dispositivo
@@ -66,7 +66,7 @@ def create_user(name_user, password_user, permiso):
 
 def loadFactoryDefault(password_root, name_user, password_user, ip, netmask):
     # Inicializa Nornir
-    nr = InitNornir(config_file="/home/kevin/junos-networkAutomation/proyectnornir/config.yaml")
+    nr = InitNornir(config_file="/home/kevin/github/junos-networkAutomation/proyectnornir/config.yaml")
 
     commands = [
         f"load factory-default",
@@ -89,7 +89,7 @@ def loadFactoryDefault(password_root, name_user, password_user, ip, netmask):
 
 def save_config_to_file(ip_list):
     # Directorio base
-    base_directory = "/home/kevin/junos-networkAutomation/proyectnornir"
+    base_directory = "/home/kevin/github/junos-networkAutomation/proyectnornir"
     backup_directory = os.path.join(base_directory, "backup")
 
     # Verificar si la carpeta de respaldo existe; si existe, elimínala
@@ -119,7 +119,7 @@ def save_config_to_file(ip_list):
 
 def create_backup_zip():
     # Directorio base donde se encuentra la carpeta "backup"
-    base_directory = "/home/kevin/junos-networkAutomation/proyectnornir"
+    base_directory = "/home/kevin/github/junos-networkAutomation/proyectnornir"
 
     # Nombre del archivo ZIP de respaldo
     backup_zip_file = "backup.zip"

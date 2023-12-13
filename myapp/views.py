@@ -11,7 +11,7 @@ from django.http.response import JsonResponse
 
 
 def mi_vista(request):
-    path_hosts_switches = 'proyectnornir/inventory/switches.yaml'
+    path_hosts_switches = '/home/kevin/github/junos-networkAutomation/proyectnornir/inventory/switches.yaml'
     list_selecction = []
 
     if request.method == 'POST':
@@ -97,14 +97,14 @@ def LogoutPage(request):
 
 
 def descargar_json(request):
-    ruta = "/home/kevin/junos-networkAutomation/proyectnornir/"
+    ruta = "/home/kevin/github/junos-networkAutomation/proyectnornir"
     nombre_archivo = "result.json"
     existe_json(ruta, nombre_archivo)
 
     if request.method == 'POST':
         print('estoy haciendo un post')
         # Ruta al archivo JSON que deseas descargar
-        json_file_path = '/home/kevin/junos-networkAutomation/proyectnornir/result.json'
+        json_file_path = '/home/kevin/github/junos-networkAutomation/proyectnornir/result.json'
 
         # Verificar si el archivo existe
         if os.path.exists(json_file_path):
@@ -115,7 +115,7 @@ def descargar_json(request):
         else:
             return HttpResponse('El archivo no se encontró', status=404)
     else:
-        json_file_path = '/home/kevin/junos-networkAutomation/proyectnornir/result.json' 
+        json_file_path = '/home/kevin/github/junos-networkAutomation/proyectnornir/result.json' 
         if os.path.exists(json_file_path):
             with open(json_file_path, 'r') as file:
                 json_content = json.load(file)  # Cargar el contenido JSON
@@ -126,7 +126,7 @@ def descargar_json(request):
 
 
 def download_backup(request):
-    ruta = "/home/kevin/junos-networkAutomation/proyectnornir/backup"
+    ruta = "/home/kevin/github/junos-networkAutomation/proyectnornir/backup"
 
     if request.method == 'POST':
         # Llama a la función para crear el archivo ZIP

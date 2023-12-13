@@ -32,7 +32,7 @@ def create_hosts_yaml(list_selecction, path_hosts_switches):
     # print(f'ip_switches: {ip_switches}')
 
     # with open('prueba/new.yaml', 'w') as archivo:
-    with open('/home/kevin/junos-networkAutomation/proyectnornir/inventory/hosts.yaml', 'w') as archivo:
+    with open('/home/kevin/github/junos-networkAutomation/proyectnornir/inventory/hosts.yaml', 'w') as archivo:
         archivo.write("---")
         for element in list_selecction:
             # print(f'element: {element}')
