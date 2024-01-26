@@ -1,0 +1,32 @@
+{% extends 'layouts/base_consultor.html' %}
+
+{% load static %}
+{% block content %}
+    <!-- Navbar -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Características principales:</h2>
+                <p>Automatización de Configuraciones: Permite automatizar la configuración de switches de red de manera rápida y precisa.</p>
+                <p>Consultas a Varios Switches: Puede realizar consultas y operaciones en uno o varios switches a la vez.</p>
+                <p>Interfaz Intuitiva: Ofrece una interfaz fácil de usar para definir tareas de automatización y consultar información de los switches.</p>
+            </div>
+        </div>
+        <div class="mt-4">
+            <h2>Uso Básico:</h2>
+            <p>Inicie sesión en la herramienta con sus credenciales.</p>
+            <p>Seleccione los switches a los que desea aplicar una tarea de automatización.</p>
+            <p>Defina la tarea que desea realizar, como configurar una VLAN, realizar una copia de seguridad de la configuración, etc.</p>
+            <p>Ejecute la tarea y la herramienta automatizará la acción en los switches seleccionados.</p>
+        </div>
+        <div class="mt-4">
+            <h2>Requisitos:</h2>
+            <p>Acceso a los switches de red que desea administrar.</p>
+            <p>Conocimiento básico de configuración de switches y del framework Nornir.</p>
+        </div>
+        <div class="mt-4">
+            <h2>Contacto y Soporte:</h2>
+            <p>Si necesita ayuda o tiene alguna pregunta sobre el uso de esta herramienta, no dude en ponerse en contacto con nuestro equipo de soporte técnico en <a href="mailto:support@example.com">support@example.com</a>.</p>
+        </div>
+    </div>
+{% endblock content %}

@@ -172,10 +172,21 @@ def list_usuarios_norrnir(request):
     return JsonResponse(data)
 
 
-def HomePage(request):
-    my_user = request.user  # Asegúrate de que user esté disponible en el contexto.
-    template_name = 'layouts/base-admin.html' if my_user.is_authenticated and my_user.is_staff else 'layouts/base-consultor.html'
-    return render(request, 'home1.html', {'my_user': my_user, 'template_name': template_name})
+# def HomePageAdministraror(request):
+#     my_user = request.user  # Asegúrate de que user esté disponible en el contexto.
+#     template_name = 'layouts/base-admin.html' if my_user.is_authenticated and my_user.is_staff else 'layouts/base-consultor.html'
+#     return render(request, 'home1.html', {'my_user': my_user, 'template_name': template_name})
+
+# def HomePageVisor(request):
+#     my_user = request.user  # Asegúrate de que user esté disponible en el contexto.
+#     template_name = 'layouts/base-admin.html' if my_user.is_authenticated and my_user.is_staff else 'layouts/base-consultor.html'
+#     return render(request, 'home1.html', {'my_user': my_user, 'template_name': template_name})
+
+def HomePageAdministraror(request):
+    return render(request, 'home-administrador.html')
+
+def HomePageVisor(request):
+    return render(request, 'home-visor.html')
 
 
 def SignupPage(request):
@@ -214,9 +225,10 @@ def LoginPage(request):
         if user is not None:
             if user.is_staff:
                 login(request, user)
-                return redirect('home1')
+                return redirect('home-administrador')
             else:
-                return redirect('home2')
+                login(request, user)
+                return redirect('home-visor')
         else:
             return HttpResponse('Username or Password is incorrecticimo!')
 

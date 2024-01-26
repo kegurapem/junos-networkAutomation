@@ -14,8 +14,8 @@ urlpatterns = [
 
     # A partir de aquí corren los urls funcnionales
     # rutas para el home según el tipo de usuario: ADMINISTRADOR / VISOR
-    path('home1/', views.HomePage, name="home1"),
-    path('home2/', views.HomePage, name="home2"),
+    path('home1/', views.HomePageAdministraror, name="home-administrador"),
+    path('home2/', views.HomePageVisor, name="home-visor"),
     path('signup1/', views.SignupPage, name="signup1"),
     path('login1/', views.LoginPage, name="login1"),
     path('logout1/', views.LogoutPage, name="logout1"),
