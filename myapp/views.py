@@ -76,19 +76,19 @@ def SignupPage(request):
     return render (request, 'signup.html')
 
 
-def LoginPage(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        pass1 = request.POST.get('pass')
-        user = authenticate(request, username = username, password = pass1)
+# def LoginPage(request):
+#     if request.method == 'POST':
+#         username = request.POST.get('username')
+#         pass1 = request.POST.get('pass')
+#         user = authenticate(request, username = username, password = pass1)
 
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            return HttpResponse('Username or Password is incorrect!!!')
+#         if user is not None:
+#             login(request, user)
+#             return redirect('home')
+#         else:
+#             return HttpResponse('Username or Password is incorrect!!!')
 
-    return render (request, 'login_nornir.html')
+#     return render (request, 'login_nornir.html')
 
 
 def LogoutPage(request):
@@ -209,12 +209,16 @@ def LoginPage(request):
         password1 = request.POST.get('password')
         
         user = authenticate(request, username=username, password=password1)
+        print(user)
 
         if user is not None:
-            login(request, user)
-            return redirect('home1')
+            if user.is_staff:
+                login(request, user)
+                return redirect('home1')
+            else:
+                return redirect('home2')
         else:
-            return HttpResponse('Username or Password is incorrect!')
+            return HttpResponse('Username or Password is incorrecticimo!')
 
     return render(request, 'login1.html')
 

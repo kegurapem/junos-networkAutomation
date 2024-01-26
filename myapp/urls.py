@@ -13,7 +13,9 @@ urlpatterns = [
     path('listusersnornir/', views.list_usuarios_norrnir, name="listusersnornir"),
 
     # A partir de aquí corren los urls funcnionales
+    # rutas para el home según el tipo de usuario: ADMINISTRADOR / VISOR
     path('home1/', views.HomePage, name="home1"),
+    path('home2/', views.HomePage, name="home2"),
     path('signup1/', views.SignupPage, name="signup1"),
     path('login1/', views.LoginPage, name="login1"),
     path('logout1/', views.LogoutPage, name="logout1"),
@@ -23,5 +25,5 @@ urlpatterns = [
     path('configuration', views.mi_vista, name="configuration"),
     # path('downloadbackup', views.downloadbackup, name="downloadbackup"),
     path('download_backup/', views.download_backup, name='downloadbackup'),
-     path('factorydefault', views.factoryDefault, name='factory'),
+    path('factorydefault', views.factoryDefault, name='factory'),
 ]

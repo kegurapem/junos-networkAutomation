@@ -4,8 +4,8 @@ set system commit factory-settings reset-virtual-chassis-configuration
 set system login user admin-else full-name "usuario administrador"
 set system login user admin-else uid 2000
 set system login user admin-else class super-user
-set system login user admin-else authentication encrypted-password "$6$8tIGqEam$D33qhNn5Q0znhBbAyDjSzXFS8ypBl3RUmpP.SBaSsNBGnGH4jxQe0rd0Yx0xAQ/klmuGKJz7eClJnsZLG423H/"
-set system root-authentication encrypted-password "$6$q4UwGv8t$pz/8r8syXE5MVCO3whdEVjXqK5JONI7NcBcLj44.Bav9g2Dai8LbMHtHI0GsNcuGC2mksF/YvTNr2oVbJ9NdO/"
+set system login user admin-else authentication encrypted-password "$6$fKTfOTQy$o0xzduGckkqRz/yAeI2W8NiiI50UFBQAVz8IX192ylSvLSIiXUBukj5SiNC2H4.tMROHsPgHPZNLAyroQM2HX."
+set system root-authentication encrypted-password "$6$avypoxGN$KtMbRWHbF/T4KY43jw7PwMImLvwLmoZp4O7eEDHt0J1sLOYSvAxQNK/Ia8q8VE3.kpGW3C3jTKnV2DsOY9qed."
 set system auto-snapshot
 set system services ssh
 set system services netconf ssh
